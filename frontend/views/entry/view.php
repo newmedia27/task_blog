@@ -41,8 +41,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'date_create',
             'coment_status',
-            'preview:ntext',
-            'text:ntext',
+            'preview:raw',
+            'text:raw',
 //            'count',
         ],
     ]) ?>

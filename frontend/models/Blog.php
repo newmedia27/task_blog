@@ -100,7 +100,7 @@ class Blog extends \yii\db\ActiveRecord
         if ($this->validate()) {
             $path = 'upload/store/' . $this->image->baseName . '.' . $this->image->extension;
             $this->image->saveAs($path);
-            $this->attachImage($path);
+            $this->attachImage($path,true);
             unlink($path);
             return true;
         } else {
