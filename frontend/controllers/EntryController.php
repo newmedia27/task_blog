@@ -36,13 +36,18 @@ class EntryController extends Controller
      */
     public function actionIndex($id)
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Blog::find()->where(['author'=>$id]),
-        ]);
+        if(isset($id)){
+            $dataProvider = new ActiveDataProvider([
+                'query' => Blog::find()->where(['author'=>$id]),
+            ]);
 
-        return $this->render('index', [
-            'dataProvider' => $dataProvider,
-        ]);
+            return $this->render('index', [
+                'dataProvider' => $dataProvider,
+            ]);
+        }else{
+            return $this->redirect(['news/list']);
+        }
+
     }
 
     /**
@@ -112,7 +117,7 @@ class EntryController extends Controller
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['news/list']);
+        return $this->redirect(['index']);
     }
 
     /**
