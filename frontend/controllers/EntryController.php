@@ -34,9 +34,9 @@ class EntryController extends Controller
      * Lists all Blog models.
      * @return mixed
      */
-    public function actionIndex($id)
+    public function actionIndex($id=null)
     {
-        if(isset($id)){
+
             $dataProvider = new ActiveDataProvider([
                 'query' => Blog::find()->where(['author'=>$id]),
             ]);
@@ -44,9 +44,7 @@ class EntryController extends Controller
             return $this->render('index', [
                 'dataProvider' => $dataProvider,
             ]);
-        }else{
-            return $this->redirect(['news/list']);
-        }
+
 
     }
 
